@@ -1,15 +1,10 @@
-//Examine document object
+//get elemnts by class name
 
-let headerTitle = document.getElementById("header-title")
+let items = document.getElementsByClassName("list-group-item")
+console.log(items)
 
-headerTitle.textContent = "New Title"
-headerTitle.innerText = 'Good bye friends'
+items[2].style.backgroundColor = "green"
 
-headerTitle.style.borderBottom = "solid 2px black"
-
-let addItems = document.querySelector(".title")
-
-console.log(addItems)
-
-addItems.innerHTML = "<b>ADD ITEM</b>"
-addItems.style.color = "green"
+for(let i=0; i<items.length; i++){
+    items[i].style.fontWeight = "bold"
+}
