@@ -1,14 +1,24 @@
 
-// let items = document.getElementsByClassName("list-group-item")
+// query selector //
 
-// for(let i=0; i<items.length; i++){
-//     items[i].style.backgroundColor = "#b4b4b4"
-// }
+let secondItem = document.querySelector("li:nth-child(2)")
 
-//get elements by tag name
+secondItem.style.backgroundColor = "green"
 
-let li = document.getElementsByTagName("li")
+let thirdItem = document.querySelector("li:nth-child(3)")
 
-for(let i=0; i<li.length; i++){
-    li[i].style.backgroundColor = "green"
+thirdItem.style.display = "none"
+
+// query selector all //
+
+let items = document.querySelectorAll("li")
+
+// console.log(items)
+
+items[1].style.color = "green"
+
+for(let i=0; i<items.length; i++){
+    if((i+1)%2===1){
+        items[i].style.backgroundColor = "green"
+    }
 }
