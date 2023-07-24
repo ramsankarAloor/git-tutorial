@@ -1,24 +1,30 @@
 
-// query selector //
+let itemList = document.querySelector('#items')
+//parent node
+// console.log(itemList.parentNode)
+itemList.parentElement.style.backgroundColor = "#d4d4d4"
 
-let secondItem = document.querySelector("li:nth-child(2)")
+//children
+//better practice is to use children and not childNodes
+console.log(itemList.children)
+itemList.children[1].style.backgroundColor = "yellow"
 
-secondItem.style.backgroundColor = "green"
+//better to use firstElemectChild instead of firstChild
 
-let thirdItem = document.querySelector("li:nth-child(3)")
+itemList.firstElementChild.style.fontWeight = "bold"
+itemList.lastElementChild.textContent = "Hello 4"
 
-thirdItem.style.display = "none"
+console.log(itemList.nextElementSibling)
 
-// query selector all //
+let newText = document.createTextNode('Hello world')
 
-let items = document.querySelectorAll("li")
+let container = document.querySelector('header .container')
+let h1 = document.querySelector("header h1")
 
-// console.log(items)
+container.insertBefore(newText, h1)
 
-items[1].style.color = "green"
+let items = document.querySelector('#items')
+let item1 = items.firstElementChild
 
-for(let i=0; i<items.length; i++){
-    if((i+1)%2===1){
-        items[i].style.backgroundColor = "green"
-    }
-}
+items.insertBefore(newText, item1)
+
