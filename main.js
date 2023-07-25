@@ -20,11 +20,15 @@ function doThis(e){
 
   let textInside = document.createTextNode(toBePrinted)
   let deleteBtn = document.createElement('button')
+  let editBtn = document.createElement('button')
   deleteBtn.textContent = "Delete"
+  editBtn.textContent = 'Edit'
   deleteBtn.className = 'btnDelete'
+  editBtn.className = 'btnDelete'
   let li = document.createElement('li')
   li.appendChild(textInside)
   li.appendChild(deleteBtn)
+  li.appendChild(editBtn)
   
   let ul = document.getElementById('items')
   
@@ -33,12 +37,26 @@ function doThis(e){
   localStorage.setItem(emailId, myObj_serialised)
 
   deleteBtn.addEventListener('click', deleteEle)
+  editBtn.addEventListener('click', editEle)
 
   function deleteEle(e){
     let liCurrent = e.target.parentElement
     let ul = document.getElementById('items')
     localStorage.removeItem(emailId)
     ul.removeChild(liCurrent)
+  }
+
+  function editEle(e){
+    let liCurrent = e.target.parentElement
+    let ul = document.getElementById('items')
+    localStorage.removeItem(emailId)
+    ul.removeChild(liCurrent)
+
+    document.getElementById('name').value = username
+    document.getElementById('email').value = emailId
+    document.getElementById('phone').value = phone
+
+
   }
 
   document.getElementById('name').value = ''
