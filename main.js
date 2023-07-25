@@ -8,9 +8,15 @@ function doThis(e){
   let username = document.getElementById('name').value 
   let emailId = document.getElementById('email').value 
 
-  localStorage.setItem('name', username)
-  localStorage.setItem('email', emailId)
+  let myObj_serialised = JSON.stringify({
+    'name' : username,
+    'email': emailId
+  })
+
+  localStorage.setItem('my_obj', myObj_serialised)
 
   document.getElementById('name').value = ''
   document.getElementById('email').value = ''
+
+
 }
