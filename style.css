@@ -63,12 +63,18 @@
   .btn:hover {
     background: #444;
   }
+
+  .btnDelete{
+    width: 50px;
+    height: 25px;
+    color: #333;
+  }
   
   .bg-dark {
     background: #333;
     color: #fff;
   } 
-  
+
   
   .error {
     background: orangered;
