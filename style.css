@@ -27,7 +27,7 @@
   
   .container {
     margin: auto;
-    width: 500px;
+    width: 400px;
     overflow: auto;
     padding: 3rem 2rem;
   }
@@ -42,6 +42,14 @@
   }
   
   #my-form input[type='text'] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .form-select{
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;

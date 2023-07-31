@@ -6,17 +6,17 @@ form.addEventListener('submit', doThis)
 
 function doThis(e){
   e.preventDefault()
-  let username = document.getElementById('name').value 
-  let emailId = document.getElementById('email').value 
-  let phone = document.getElementById('phone').value 
+  let amount = document.getElementById('amount').value 
+  let description = document.getElementById('description').value 
+  let catagory = document.getElementById('dropdown').value 
 
   let myObj_serialised = JSON.stringify({
-    'name' : username,
-    'email': emailId,
-    'phone' : phone
+    'amount' : amount,
+    'description': description,
+    'catagory' : catagory
   })
 
-  let toBePrinted = username+' - '+emailId+' - '+phone
+  let toBePrinted = amount+' - '+description+' - '+catagory
 
   let textInside = document.createTextNode(toBePrinted)
   let deleteBtn = document.createElement('button')
@@ -34,7 +34,7 @@ function doThis(e){
   
   ul.appendChild(li)
   
-  localStorage.setItem(emailId, myObj_serialised)
+  localStorage.setItem(description, myObj_serialised)
 
   deleteBtn.addEventListener('click', deleteEle)
   editBtn.addEventListener('click', editEle)
@@ -42,26 +42,26 @@ function doThis(e){
   function deleteEle(e){
     let liCurrent = e.target.parentElement
     let ul = document.getElementById('items')
-    localStorage.removeItem(emailId)
+    localStorage.removeItem(description)
     ul.removeChild(liCurrent)
   }
 
   function editEle(e){
     let liCurrent = e.target.parentElement
     let ul = document.getElementById('items')
-    localStorage.removeItem(emailId)
+    localStorage.removeItem(description)
     ul.removeChild(liCurrent)
 
-    document.getElementById('name').value = username
-    document.getElementById('email').value = emailId
-    document.getElementById('phone').value = phone
+    document.getElementById('amount').value = amount
+    document.getElementById('description').value = description
+    document.getElementById('dropdown').value = catagory
 
 
   }
 
-  document.getElementById('name').value = ''
-  document.getElementById('email').value = ''
-  document.getElementById('phone').value = ''
+  document.getElementById('amount').value = ''
+  document.getElementById('description').value = ''
+  document.getElementById('dropdown').value = 'Food'
 
 
 }
