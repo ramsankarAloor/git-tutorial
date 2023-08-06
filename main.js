@@ -10,6 +10,12 @@ function doThis(e){
   let emailId = document.getElementById('email').value 
   let phone = document.getElementById('phone').value 
 
+  let obj = {
+    'name' : username,
+    'email': emailId,
+    'phone' : phone
+  }
+
   let myObj_serialised = JSON.stringify({
     'name' : username,
     'email': emailId,
@@ -33,8 +39,12 @@ function doThis(e){
   let ul = document.getElementById('items')
   
   ul.appendChild(li)
+
+  axios.post("https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData", obj)
+  .then(resp=>console.log(resp))
+  .catch(err=>console.log(err))
   
-  localStorage.setItem(emailId, myObj_serialised)
+  // localStorage.setItem(emailId, myObj_serialised)
 
   deleteBtn.addEventListener('click', deleteEle)
   editBtn.addEventListener('click', editEle)
