@@ -1,7 +1,8 @@
 let form = document.getElementById("my-form");
 
 form.addEventListener("submit", doThis);
-
+let edit = 0;
+let edit_id 
 function addMember(memberObj) {
   let toBePrinted =
     memberObj.name + " - " + memberObj.email + " - " + memberObj.phone;
@@ -28,20 +29,53 @@ function addMember(memberObj) {
     let liCurrent = e.target.parentElement;
     let ul = document.getElementById("items");
     ul.removeChild(liCurrent);
-    axios.delete(`https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData/${memberObj._id}`)
-    .catch((err)=>{
-      console.log(err)
-    })
+    axios
+      .delete(
+        `https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData/${memberObj._id}`
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  // editBtn.addEventListener("click", editEle);
+
+  editBtn.addEventListener("click", editEle);
+
+  function editEle(e) {
+    edit = 1
+    let liCurrent = e.target.parentElement;
+    let ul = document.getElementById("items");
+    // localStorage.removeItem(emailId);
+    ul.removeChild(liCurrent);
+
+    document.getElementById("name").value = memberObj.name;
+    document.getElementById("email").value = memberObj.email;
+    document.getElementById("phone").value = memberObj.phone;
+
+    edit_id = memberObj._id
+    // axios
+    //   .put(
+    //     `https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData/${memberObj._id}`,
+    //     updated
+    //   )
+    //   .then((res) => {
+    //     addMember(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }
 }
 
-axios.get("https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData")
-.then(res=>{
-  for(let i=0; i<res.data.length; i++){
-    addMember(res.data[i])
-  }
-}).catch(err=>console.log(err))
+axios
+  .get(
+    "https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData"
+  )
+  .then((res) => {
+    for (let i = 0; i < res.data.length; i++) {
+      addMember(res.data[i]);
+    }
+  })
+  .catch((err) => console.log(err));
 
 function doThis(e) {
   e.preventDefault();
@@ -54,29 +88,31 @@ function doThis(e) {
     email: emailId,
     phone: phone,
   };
-
-  axios.post("https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData", obj)
-  .then((res)=>{
-    console.log(res)
-    addMember(res.data)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
-
-  // localStorage.setItem(emailId, myObj_serialised)
-
-  
-
-  function editEle(e) {
-    let liCurrent = e.target.parentElement;
-    let ul = document.getElementById("items");
-    localStorage.removeItem(emailId);
-    ul.removeChild(liCurrent);
-
-    document.getElementById("name").value = username;
-    document.getElementById("email").value = emailId;
-    document.getElementById("phone").value = phone;
+  if (edit === 0) {
+    axios
+      .post(
+        "https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData",
+        obj
+      )
+      .then((res) => {
+        addMember(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }else if(edit === 1){
+    axios
+      .put(
+        `https://crudcrud.com/api/3c0a338408744ded89f9e06f14ba0193/appointmentData/${edit_id}`,
+        obj
+      )
+      .then(() => {
+        addMember(obj);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      edit = 0
   }
 
   document.getElementById("name").value = "";
