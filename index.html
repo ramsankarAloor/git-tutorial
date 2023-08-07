@@ -4,42 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>JS For Beginners</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Expense Tracker</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
-    <header>
-      <h1>JS For Beginners</h1>
-    </header>
+    
 
-    <section class="container">
       <form id="my-form">
-        <h1>Add User</h1>
-        <div class="msg"></div>
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" required>
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="text" id="email" required>
-        </div>
-        <div>
-          <label for="phone">Phone:</label>
-          <input type="text" id="phone" pattern="[0-9]{10}" required>
-        </div>
-        <input class="btn" type="submit" value="Submit">
+        
+        <label for="price">Selling Price : </label>
+        <input type="text" id="price" pattern="[0-9]*" required><br><br>
+        <label for="product">Product Name : </label>
+        <input type="text" id="product" required>
+        <input type="submit" value="Add Product">
       </form>
 
-      <ul id="users"></ul>
+      <h1>Products</h1>
+
+      
 
       <ul class="items" id="items">
         <!-- <li class="item">Item 1</li>
         <li class="item">Item 2</li>
         <li class="item">Item 3</li> -->
-      </ul>
+      </ul> 
 
-    </section>
+    <h3 style="display: inline;">Total value worth of products : </h3>
+    <label for="suminput">Rs </label>
+    <input type="text" id="suminput" style="border: none; outline: none;" readonly>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="main.js"></script>
